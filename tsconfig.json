@@ -1,13 +1,42 @@
 {
   "compilerOptions": {
+    // OUTPUT:
+    // Where to put the compiled JS files (though ts-loader usually handles this in memory for Webpack)
     "outDir": "./dist/",
+    
+    // DEBUGGING:
+    // Generates .map files so you can debug original TS source code in the browser
     "sourceMap": true,
+    
+    // STRICTNESS:
+    // Disallow variables with 'any' type to ensure type safety
     "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
-    "jsx": "react",
+    
+    // MODULE SYSTEM:
+    // Use modern ES modules (import/export) for Webpack to tree-shake
+    "module": "esnext",
+    
+    // JS TARGET:
+    // Which version of JS to output. ES2020 supports most modern features directly.
+    "target": "es2020",
+    
+    // REACT:
+    // Transform JSX into React.createElement calls automatically ("react-jsx" is modern React 17+)
+    "jsx": "react-jsx",
+    
+    // INTEROP:
+    // Allows importing CommonJS modules (like 'react') as default imports
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true
-  }
+    "esModuleInterop": true,
+    
+    // RESOLUTION:
+    // "bundler" is best for Webpack 5. It mimics how bundlers resolve modules (ignoring extensions mostly)
+    "moduleResolution": "bundler",
+    
+    // Required when using "bundler" resolution if not checking extensions
+    "allowImportingTsExtensions": false
+  },
+  "include": [
+    "src" // Only compile files in the src folder
+  ]
 }
